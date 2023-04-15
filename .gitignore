@@ -4,6 +4,7 @@
 .idea/
 target/
 logs/
+data/
 
 # File-based project format
 *.iws
