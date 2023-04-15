@@ -1,3 +1,18 @@
 # Transactional Outbox 
+Transactional Outbox is a 10-dollar term for saving an inbound event to a table in a database with the intention to publish the saved event to an outbound topic.
 
-This is a demo consumer microservice thats saves messages received on an input topic to a dedup table, dispatches the message to an output topic, and fires a request to an upstream service in an all-or-nothing type transactional scenario using [Outbox](https://softwaremill.com/microservices-101/).
+## Purpose
+Maintaining state between transactions that span multiple systems (for example, a dispatch to an outbound topic on a messaging platform and an upsert into a database)
+
+## Problem
+Transactions T1, T2, T3 on multiple systems cannot all be rolled back if something goes wrong with say T2. T1 and T3 will still have occured, leaving the system in an inconsistent state. 
+
+## Usage
+Commonly used as part of long running distributed transactions that span multiple microservices.
+
+
+## References
+1. [Outbox](https://softwaremill.com/microservices-101/)
+2. [Distributed Transaction](https://hazelcast.com/glossary/distributed-transaction/)
+3. [2-Phase Commit](https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html)
+4. [`save()` vs `saveAndFlush()`](https://stackoverflow.com/a/43884321)
