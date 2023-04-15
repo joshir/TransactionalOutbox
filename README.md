@@ -4,8 +4,12 @@ Transactional Outbox is a 10-dollar term for saving an inbound event to a table 
 ## Purpose
 Maintaining state between transactions that span multiple systems (for example, a dispatch to an outbound topic on a messaging platform and an upsert into a database)
 
+## Problem
+Transactions T1, T2, T3 on multiple systems cannot be rolled back if something goes wrong, leaving the system in an inconsistent state. 
+
 ## Usage
 Commonly used as part of long running distributed transactions that span multiple microservices.
+
 
 ## References
 1. [Outbox](https://softwaremill.com/microservices-101/)
