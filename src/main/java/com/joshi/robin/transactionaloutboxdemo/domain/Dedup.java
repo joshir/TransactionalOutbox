@@ -15,7 +15,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "DEDUP_STORE")
 public class Dedup {
-  private static final int VARCHAR_MAX_LENGTH = 4096;
   @Id
   private UUID id;
   @Column(nullable = false)

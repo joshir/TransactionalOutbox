@@ -15,8 +15,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "EVENT_OUTBOX")
 public class EventOutbox {
-  private static final int VARCHAR_MAX_LENGTH = 4096;
-
   @Id
   @GeneratedValue(generator = "uuid2")
   @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -33,4 +31,18 @@ public class EventOutbox {
 
   @Version
   private int version;
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EventOutbox that = (EventOutbox) o;
+    return id.equals(that.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return id.hashCode();
+  }
 }
