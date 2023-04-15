@@ -11,10 +11,15 @@
 	<groupId>com.joshi.robin</groupId>
 	<artifactId>transactional-outbox-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>transactional-outbox-demo</name>
-	<description>Outbox Sample</description>
+    <packaging>pom</packaging>
 
-	<dependencies>
+    <modules>
+        <module>transactional-outbox</module>
+		<module>msg-stream</module>
+		<module>mock-upstream-service</module>
+	</modules>
+
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
