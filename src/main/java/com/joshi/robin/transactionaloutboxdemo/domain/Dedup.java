@@ -34,6 +34,6 @@ public class Dedup {
 
   @Override
   public int hashCode() {
-    return id != null ? id.hashCode() : 0;
+    return id.hashCode();
   }
 }
