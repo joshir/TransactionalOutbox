@@ -11,7 +11,7 @@ Transactions **T1**, **T2**, **T3** across multiple systems cannot all be rolled
 Commonly used as part of long running distributed transactions (aka Sagas) that span multiple microservices.
 
 ## Analysis
-If transactions **T1** and **T2** were localised by saving **T2**, the event to be dispatched, to the database, we are effectively making **T2** part of the local ACID transaction **T1**. To make transaction **T3**, say a call to an upstream service, idempotent, we can put in place certain guarantees (like a dedup table for incoming events) so that the same event will not pass more than once. More stricter guarantees at the level of database locks can also be achieved through tightening transactional isolation and propagation levels though with a performance hit.
+If transactions **T1** and **T2** were localised by saving **T2**, the event to be dispatched, to the database, we are effectively making **T2** part of the local ACID transaction **T1**. To make transaction **T3**, say a call to an upstream service idempotent, we can put in place certain guarantees (like a dedup table for incoming events) so that the same event will not pass more than once. More stricter guarantees at the level of database locks can also be achieved through tightening transactional isolation and propagation levels though with a performance hit.
 
 ## References
 1. [Outbox](https://softwaremill.com/microservices-101/)
