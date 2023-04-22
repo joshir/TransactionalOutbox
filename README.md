@@ -1,5 +1,5 @@
 # Transactional Outbox 
-Transactional Outbox is a 10-dollar word for a $1 concept. Essentially, it means saving an inbound event to a table in a database with the intention to publish the saved event to an outbound topic. When and how the event is published depends largely on your use case but it's uncommon not to have this happen near real time.
+Transactional Outbox is a 10-dollar term for a $1 concept. Essentially, it means saving an inbound event to a table in a database with the intention to publish the saved event to an outbound topic. When and how the event is published depends largely on your use case but it's uncommon not to have this happen near real time.
 
 ## Purpose
 Maintaining state between transactions that span multiple systems (for example, a dispatch to an outbound topic on a messaging platform and an upsert into a database)
