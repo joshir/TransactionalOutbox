@@ -5,12 +5,13 @@ Transactional Outbox is a 10-dollar word for a $1 concept. Essentially, it means
 Maintaining state between transactions that span multiple systems (for example, a dispatch to an outbound topic on a messaging platform and an upsert into a database)
 
 ## Problem
-Transactions **T1**, **T2**, **T3** across multiple systems cannot all be rolled back if something goes wrong with say **T2**. **T1** and **T3** will still have occured, leaving the system in an inconsistent state. If, however, transactions **T1** and **T2** were localised by saving **T2**, the event to be dispatched, to the database, we are effectively making **T2** a part of the local ACID transaction **T1**. To make transaction **T3**, say a call to an upstream service, idempotent, we can put in place certain guarantees (like a dedup table for incoming events) so that the same event will not pass more than once. More stricter guarantees (thread level) can also be achieved through tightening transaction isolation and propagation levels in the database, though performance will be impacted.
+Transactions **T1**, **T2**, **T3** across multiple systems cannot all be rolled back if something goes wrong with say **T2**. **T1** and **T3** will still have occured, leaving the system in an inconsistent state. 
+
 ## Usage
 Commonly used as part of long running distributed transactions (aka Sagas) that span multiple microservices.
 
 ## Analysis
-
+If transactions **T1** and **T2** were localised by saving **T2**, the event to be dispatched, to the database, we are effectively making **T2** part of the local ACID transaction **T1**. To make transaction **T3**, say a call to an upstream service, idempotent, we can put in place certain guarantees (like a dedup table for incoming events) so that the same event will not pass more than once. More stricter guarantees at the level of database locks can also be achieved through tightening transactional isolation and propagation levels though with a performance hit.
 
 ## References
 1. [Outbox](https://softwaremill.com/microservices-101/)
